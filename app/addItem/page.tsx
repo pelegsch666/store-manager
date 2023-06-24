@@ -1,21 +1,28 @@
-'use client';
+'use client'
 import React, { useState } from 'react';
 import { arrangeDate } from '@/utils/helpers/function';
 import { ItemState } from '@/utils/types/types';
+import { items } from '@/utils/items';
+import Link from 'next/link';
+import { useRecoilState, useSetRecoilState } from 'recoil'
+
 type Props = {};
 
 const AddItems = (props: Props) => {
-  const [item, setItem] = useState<ItemState>({
+  const [item, setItem] = useState({
     name: '',
     itemDescription: '',
     catalogNumber: 0,
     itemType: 'fruit',
     date: arrangeDate().toLocaleDateString('en-GB'),
   });
-
+  
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    console.log(item);
+    items.push({
+        ...item,id: items.length + 1
+    });
+    
   };
 
   const onChangeOfDate = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -94,6 +101,9 @@ const AddItems = (props: Props) => {
         </label>
         <button className="border-red">Send</button>
       </form>
+      <Link href='/editItem'>
+        Edit Items
+      </Link>
     </div>
   );
 };
