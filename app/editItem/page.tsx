@@ -37,14 +37,13 @@ const EditItem = (props: Props) => {
     return selectedItem;
   };
   const deleteItem = (itemId: string) => {
-       
     const indexOfItemWithItemId = items.findIndex(item => {
       return item.id === itemId;
-    }); 
-  const itemsBefore = items.slice(0,indexOfItemWithItemId)
-  const itemsAfter = items.slice(indexOfItemWithItemId + 1)
+    });
+    const itemsBefore = items.slice(0, indexOfItemWithItemId);
+    const itemsAfter = items.slice(indexOfItemWithItemId + 1);
 
-    setItems([...itemsBefore,...itemsAfter]);
+    setItems([...itemsBefore, ...itemsAfter]);
   };
 
   const handleChange = e => {};
@@ -53,37 +52,41 @@ const EditItem = (props: Props) => {
     <div className="flex flex-col justify-center items-center">
       <div>
         <ul className="text-white">
-          {
-            items.map((item, index) => (
-              <li key={item.id}>
-                <h4>
-                  {index + 1}. Name:{item.name}
-                </h4>
-                <h4>itemDescription:{item.itemDescription}</h4>
-                <h4>catalogNumber:{item.catalogNumber}</h4>
-                <h4>itemType:{item.itemType}</h4>
-                <h4>date:{item.date}</h4>
-                <button
-                  className="text-red-500"
-                  onClick={() => {
-                    deleteItem(item.id);
-                  }}>
-                  Delete
-                </button>
-                <button
-                  className="text-white"
-                  onClick={() => chosenItemToEdit(item.id)}>
-                  Edit
-                </button>
-              </li>
-            ))
-          }
+          {items.map((item, index) => (
+            <li key={item.id}>
+              <h4>
+                {index + 1}. Name:{item.name}
+              </h4>
+              <h4>itemDescription:{item.itemDescription}</h4>
+              <h4>catalogNumber:{item.catalogNumber}</h4>
+              <h4>itemType:{item.itemType}</h4>
+              <h4>date:{item.date}</h4>
+              <button
+                className="text-red-500"
+                onClick={() => {
+                  deleteItem(item.id);
+                }}>
+                Delete
+              </button>
+              <button
+                className="text-white"
+                onClick={() => chosenItemToEdit(item.id)}>
+                Edit
+              </button>
+            </li>
+          ))}
         </ul>
       </div>
       {editMode && (
         <form className="flex flex-col justify-center items-center text-white">
-          <input placeholder={itemToEdit.name} />
+          <label className='text-inherit'>
+            Name:
+            <input placeholder={itemToEdit.name} />
+          </label>
+          <label className='text-inherit flex'>
+            item description:
           <textarea placeholder={itemToEdit.itemDescription} />
+          </label>
           <input
             placeholder={itemToEdit.date}
             type="date"
@@ -100,4 +103,4 @@ const EditItem = (props: Props) => {
 };
 
 export default EditItem;
-// useMemo 
+// useMemo
