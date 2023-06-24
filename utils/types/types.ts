@@ -11,5 +11,5 @@ export interface ItemState {
     name: string;
     itemDescription: string;
     itemType: 'vegetable' | 'fruit' | 'field crop';
-    date: Date;
+    date: string;
 }

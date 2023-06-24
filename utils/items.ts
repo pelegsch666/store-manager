@@ -15,5 +15,5 @@ export const items: Item[] = [
         catalogNumber: 2,
         itemDescription: 'Green cucumber',
         itemType: 'vegetable',
-        date: new Date()}
+        date: new Date().toLocaleDateString('en-GB')}
 ]

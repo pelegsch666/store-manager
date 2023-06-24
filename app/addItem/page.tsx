@@ -19,7 +19,7 @@ const AddItems = (props: Props) => {
 
   const onChangeOfDate = (e: React.ChangeEvent<HTMLInputElement>) => {
     if (e.target.value) {
-      setItem({ ...item, date: e.target.valueAsDate });
+      setItem({ ...item, date: e.target?.valueAsDate });
     }
   };
 
@@ -64,7 +64,7 @@ const AddItems = (props: Props) => {
           >
             <option value="fruit">Fruit</option>
             <option value="vegetable">Vegetable</option>
-            <option value="field corp">Field Corp</option>
+            <option value="field crop">Field Crop</option>
           </select>
         </label>
 
